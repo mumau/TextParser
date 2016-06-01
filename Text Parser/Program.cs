@@ -19,21 +19,30 @@ namespace Text_Parser
             string text = System.IO.File.ReadAllText(@"C:\Users\mmmumau\Desktop\GettysburgAddress.txt");
             Console.WriteLine("Contents of GettysburgAddress.txt = {0}", text);
 
-            for (int i = 0; i < text.Length; i++)
+            int index = text.IndexOf(SearchTerm);
+
+            while (index != -1)
             {
-                int j = 0;
-                while (j < SearchTerm.Length && SearchTerm[j] == text[i+j] )
-                {
-                    j++;
-                    
-                }
-                if ( j == SearchTerm.Length )
-                {
-                    Console.WriteLine("The thing you searched is in the text!  It is at {0}", i);
-                }
+
+                Console.WriteLine("The thing you searched is in the text!  It is at {0}", index);
+                index = text.IndexOf(SearchTerm, index + 1);
             }
+            //for (int i = 0; i < text.Length; i++)
+            //{
+            //    int j = 0;
+            //    while (j < SearchTerm.Length && SearchTerm[j] == text[i+j] )
+            //    {
+            //        j++;
+                    
+            //    }
+            //    if ( j == SearchTerm.Length )
+            //    {
+            //        Console.WriteLine("The thing you searched is in the text!  It is at {0}", i);
+            //    }
+            //}
                     
             Console.WriteLine("Press any key to exit.");
+
             Console.ReadKey();
         }
     }
